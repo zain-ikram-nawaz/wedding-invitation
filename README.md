@@ -81,6 +81,10 @@ RSVP_DATA_DIR=/var/lib/wedding-invitation
 
 `RSVP_DATA_DIR` is optional; default is `<project>/data`. Give only your application user filesystem access to the folder (use OS permissions/ACLs on Windows). Keep it outside deploy/release folders or mount a persistent volume so updates do not replace it. Use HTTPS and configure the reverse proxy to forward requests to `next start`. This is a simple public RSVP form, not an authenticated guest portal; URL names can be edited. If publicly advertised, apply request rate limits at your hosting proxy.
 
+## Link preview card
+
+`public/og-image.png` (1200×630) is the card WhatsApp, Facebook, X and others show when the link is shared. It uses Cormorant Garamond and Jost (SIL Open Font License). WhatsApp needs a full `https://` image URL, so **set `APP_ORIGIN` to your real domain before `npm run build`**. Otherwise the preview points at `localhost` and no image shows. Apps cache previews, so if you change the image, rename the file (for example `og-image-v2.png`) and update `src/app/layout.tsx`.
+
 ## Background music
 
 The included track is "Slightly Shehnai" by Musical Meanderings (Julian Overall), from Free Music Archive under CC BY-NC 4.0: free for non-commercial use with credit, which is shown in the footer. Keep that credit, and do not use the track for anything sold or paid. To change the music, replace `public/music/background.mp3` and update the footer credit. Browsers don't allow sound before the guest interacts with the page, so the music starts on their first tap, click or key press. It loops at 45% volume, pauses when the tab is hidden, and the round button at the bottom right mutes or unmutes it. A muted choice is remembered on that device. If the file is missing, the button is hidden. Use music you are allowed to share, and keep the file small (about 2–4 MB) so phones load it quickly.
